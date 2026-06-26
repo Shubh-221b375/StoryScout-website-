@@ -31,7 +31,7 @@ export default function Home() {
         
         {/* Trust Section - Collage Background */}
         <section 
-          className="py-32 relative overflow-hidden"
+          className="py-16 md:py-32 relative overflow-hidden"
           style={{
             backgroundImage: `url(${collageBackground})`,
             backgroundSize: "cover",
@@ -48,7 +48,7 @@ export default function Home() {
                initial={{ opacity: 0, y: 20 }}
                whileInView={{ opacity: 1, y: 0 }}
                viewport={{ once: true }}
-               className="max-w-4xl mx-auto text-center mb-20"
+               className="max-w-4xl mx-auto text-center mb-10 md:mb-20"
             >
               <motion.div
                 initial={{ scale: 0.8, opacity: 0 }}
@@ -59,11 +59,11 @@ export default function Home() {
                 <span className="text-accent font-bold tracking-widest uppercase text-sm">Travel Experiences Reimagined</span>
               </motion.div>
               
-              <h2 className="text-5xl md:text-7xl font-display font-bold text-white mb-6 leading-tight">Why Travel With <span className="bg-gradient-to-r from-accent via-orange-400 to-accent bg-clip-text text-transparent">StoryScout?</span></h2>
-              <p className="text-white/90 text-xl max-w-2xl mx-auto">We don't just plan trips; we curate transformative experiences that reshape how you see the world and yourself.</p>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-display font-bold text-white mb-4 md:mb-6 leading-tight">Why Travel With <span className="bg-gradient-to-r from-accent via-orange-400 to-accent bg-clip-text text-transparent">StoryScout?</span></h2>
+              <p className="text-white/90 text-sm sm:text-base md:text-xl max-w-2xl mx-auto px-2">We don't just plan trips; we curate transformative experiences that reshape how you see the world and yourself.</p>
             </motion.div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 max-w-6xl mx-auto">
               {[
                 { 
                   title: "10,000+ Happy Travellers", 
@@ -102,15 +102,15 @@ export default function Home() {
                   {/* Gradient Border Effect */}
                   <div className="absolute inset-0 bg-gradient-to-br from-accent/40 to-primary/40 rounded-2xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   
-                  <div className="relative p-10 bg-white/10 backdrop-blur-xl rounded-2xl border border-white/20 hover:border-white/40 transition-all duration-300 h-full">
+                  <div className="relative p-6 md:p-10 bg-white/10 backdrop-blur-xl rounded-2xl border border-white/20 hover:border-white/40 transition-all duration-300 h-full">
                     {/* Accent Dot */}
-                    <div className="w-4 h-4 bg-gradient-to-br from-accent to-orange-400 rounded-full mb-6" />
+                    <div className="w-3 h-3 md:w-4 md:h-4 bg-gradient-to-br from-accent to-orange-400 rounded-full mb-4 md:mb-6" />
                     
                     {/* Title */}
-                    <h3 className="text-2xl font-display font-bold text-white mb-4">{item.title}</h3>
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-display font-bold text-white mb-2 md:mb-4">{item.title}</h3>
                     
                     {/* Description */}
-                    <p className="text-white/80 leading-relaxed mb-6">{item.desc}</p>
+                    <p className="text-white/80 text-sm md:text-base leading-relaxed mb-4 md:mb-6">{item.desc}</p>
                     
                     {/* Accent Line */}
                     <div className="h-1 bg-gradient-to-r from-accent to-transparent rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />

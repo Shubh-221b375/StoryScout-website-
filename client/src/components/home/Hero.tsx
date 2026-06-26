@@ -53,7 +53,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7, duration: 0.8 }}
-          className="text-5xl md:text-7xl lg:text-9xl font-display font-bold text-white mb-4 leading-tight drop-shadow-2xl"
+          className="text-4xl sm:text-5xl md:text-7xl lg:text-9xl font-display font-bold text-white mb-3 md:mb-4 leading-tight drop-shadow-2xl"
         >
           Your Ticket to Adventure
         </motion.h1>
@@ -61,7 +61,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.85, duration: 0.8 }}
-          className="text-2xl md:text-3xl lg:text-4xl font-display text-white/90 mb-8 drop-shadow-lg"
+          className="text-lg sm:text-xl md:text-3xl lg:text-4xl font-display text-white/90 mb-6 md:mb-8 drop-shadow-lg"
         >
           with StoryScout
         </motion.p>
@@ -75,7 +75,7 @@ export function Hero() {
           <Button 
             size="lg" 
             onClick={scrollToRegions}
-            className="bg-accent hover:bg-accent/90 text-white px-10 py-7 text-lg rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 border-0"
+            className="bg-accent hover:bg-accent/90 text-white px-6 py-5 md:px-10 md:py-7 text-base md:text-lg rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 border-0"
           >
             Explore Regions
           </Button>

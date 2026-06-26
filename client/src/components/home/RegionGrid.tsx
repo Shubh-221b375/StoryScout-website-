@@ -5,7 +5,7 @@ import { ArrowRight } from "lucide-react";
 
 export function RegionGrid() {
   return (
-    <section id="regions" className="pt-32 pb-8 bg-background relative overflow-hidden">
+    <section id="regions" className="pt-16 md:pt-32 pb-6 md:pb-8 bg-background relative overflow-hidden">
       {/* Decorative background elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none opacity-30">
         <div className="absolute top-20 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl transform -translate-x-1/2" />
@@ -13,12 +13,12 @@ export function RegionGrid() {
       </div>
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="text-center mb-20 max-w-3xl mx-auto">
+        <div className="text-center mb-10 md:mb-20 max-w-3xl mx-auto px-2">
           <motion.span 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-accent font-medium tracking-widest uppercase text-sm mb-3 block"
+            className="text-accent font-medium tracking-widest uppercase text-xs md:text-sm mb-2 md:mb-3 block"
           >
             Discover Incredible India & Beyond
           </motion.span>
@@ -27,7 +27,7 @@ export function RegionGrid() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-5xl md:text-6xl font-display font-bold text-primary mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold text-primary mb-3 md:mb-6"
           >
             Destinations
           </motion.h2>
@@ -36,13 +36,13 @@ export function RegionGrid() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-muted-foreground text-xl leading-relaxed"
+            className="text-muted-foreground text-sm sm:text-base md:text-xl leading-relaxed"
           >
             From the snowy peaks of the North to the tranquil backwaters of the South, choose your next adventure from our curated selection of paradise.
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 auto-rows-[400px]">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 auto-rows-[200px] sm:auto-rows-[240px] md:auto-rows-[320px] lg:auto-rows-[400px]">
           {/* Trekking - Main Feature (Large) */}
           <div className="md:col-span-8 md:row-span-1">
             <Link href={`/region/${regions[0].id}`}>
@@ -52,7 +52,7 @@ export function RegionGrid() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   whileHover={{ scale: 1.01 }}
-                  className="relative h-full rounded-3xl overflow-hidden group cursor-pointer shadow-2xl"
+                  className="relative h-full rounded-2xl md:rounded-3xl overflow-hidden group cursor-pointer shadow-xl md:shadow-2xl"
                 >
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent z-10" />
                   <img 
@@ -60,13 +60,13 @@ export function RegionGrid() {
                     alt={regions[0].name} 
                     className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-110"
                   />
-                  <div className="absolute bottom-0 left-0 p-10 z-20 w-full">
-                    <span className="text-white/80 uppercase tracking-widest text-xs font-bold mb-2 block">Most Popular</span>
-                    <h3 className="text-4xl md:text-5xl font-display font-bold text-white mb-3">{regions[0].name}</h3>
-                    <p className="text-white/90 text-lg max-w-xl mb-6 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
+                  <div className="absolute bottom-0 left-0 p-4 sm:p-6 md:p-10 z-20 w-full">
+                    <span className="text-white/80 uppercase tracking-widest text-[10px] md:text-xs font-bold mb-1 md:mb-2 block">Most Popular</span>
+                    <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-bold text-white mb-2 md:mb-3">{regions[0].name}</h3>
+                    <p className="text-white/90 text-sm md:text-lg max-w-xl mb-3 md:mb-6 opacity-100 md:opacity-0 md:translate-y-4 md:group-hover:opacity-100 md:group-hover:translate-y-0 transition-all duration-500 line-clamp-2 md:line-clamp-none">
                       {regions[0].description}
                     </p>
-                    <div className="inline-flex items-center text-white border border-white/30 rounded-full px-6 py-2 backdrop-blur-md group-hover:bg-white group-hover:text-black transition-all duration-300">
+                    <div className="inline-flex items-center text-white border border-white/30 rounded-full px-4 py-1.5 md:px-6 md:py-2 text-xs md:text-sm backdrop-blur-md group-hover:bg-white group-hover:text-black transition-all duration-300">
                       Explore Packages <ArrowRight className="ml-2 w-4 h-4" />
                     </div>
                   </div>
@@ -85,7 +85,7 @@ export function RegionGrid() {
                   viewport={{ once: true }}
                   transition={{ delay: 0.2 }}
                   whileHover={{ scale: 1.01 }}
-                  className="relative h-full rounded-3xl overflow-hidden group cursor-pointer shadow-2xl"
+                  className="relative h-full rounded-2xl md:rounded-3xl overflow-hidden group cursor-pointer shadow-xl md:shadow-2xl"
                 >
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent z-10" />
                   <img 
@@ -93,12 +93,12 @@ export function RegionGrid() {
                     alt={regions[1].name} 
                     className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-110"
                   />
-                  <div className="absolute bottom-0 left-0 p-8 z-20 w-full">
-                    <h3 className="text-3xl md:text-4xl font-display font-bold text-white mb-3">{regions[1].name}</h3>
-                    <p className="text-white/90 mb-6 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 line-clamp-3">
+                  <div className="absolute bottom-0 left-0 p-4 sm:p-6 md:p-8 z-20 w-full">
+                    <h3 className="text-xl sm:text-2xl md:text-4xl font-display font-bold text-white mb-2 md:mb-3">{regions[1].name}</h3>
+                    <p className="text-white/90 text-sm md:text-base mb-3 md:mb-6 opacity-100 md:opacity-0 md:translate-y-4 md:group-hover:opacity-100 md:group-hover:translate-y-0 transition-all duration-500 line-clamp-2 md:line-clamp-3">
                       {regions[1].description}
                     </p>
-                    <div className="inline-flex items-center text-white border border-white/30 rounded-full px-6 py-2 backdrop-blur-md group-hover:bg-white group-hover:text-black transition-all duration-300">
+                    <div className="inline-flex items-center text-white border border-white/30 rounded-full px-4 py-1.5 md:px-6 md:py-2 text-xs md:text-sm backdrop-blur-md group-hover:bg-white group-hover:text-black transition-all duration-300">
                       Explore Packages <ArrowRight className="ml-2 w-4 h-4" />
                     </div>
                   </div>
@@ -117,7 +117,7 @@ export function RegionGrid() {
                   viewport={{ once: true }}
                   transition={{ delay: 0.3 }}
                   whileHover={{ scale: 1.02 }}
-                  className="relative h-full rounded-3xl overflow-hidden group cursor-pointer shadow-xl"
+                  className="relative h-full rounded-2xl md:rounded-3xl overflow-hidden group cursor-pointer shadow-lg md:shadow-xl"
                 >
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10" />
                   <img 
@@ -125,9 +125,9 @@ export function RegionGrid() {
                     alt={regions[2].name} 
                     className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-110"
                   />
-                  <div className="absolute bottom-0 left-0 p-8 z-20 w-full">
-                    <h3 className="text-2xl font-display font-bold text-white mb-4">{regions[2].name}</h3>
-                    <div className="inline-flex items-center text-white border border-white/30 rounded-full px-6 py-2 backdrop-blur-md group-hover:bg-white group-hover:text-black transition-all duration-300">
+                  <div className="absolute bottom-0 left-0 p-4 md:p-8 z-20 w-full">
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-display font-bold text-white mb-2 md:mb-4">{regions[2].name}</h3>
+                    <div className="inline-flex items-center text-white border border-white/30 rounded-full px-4 py-1.5 md:px-6 md:py-2 text-xs md:text-sm backdrop-blur-md group-hover:bg-white group-hover:text-black transition-all duration-300">
                       Explore Packages <ArrowRight className="ml-2 w-4 h-4" />
                     </div>
                   </div>
@@ -146,7 +146,7 @@ export function RegionGrid() {
                   viewport={{ once: true }}
                   transition={{ delay: 0.4 }}
                   whileHover={{ scale: 1.02 }}
-                  className="relative h-full rounded-3xl overflow-hidden group cursor-pointer shadow-xl"
+                  className="relative h-full rounded-2xl md:rounded-3xl overflow-hidden group cursor-pointer shadow-lg md:shadow-xl"
                 >
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10" />
                   <img 
@@ -154,9 +154,9 @@ export function RegionGrid() {
                     alt={regions[3].name} 
                     className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-110"
                   />
-                  <div className="absolute bottom-0 left-0 p-8 z-20 w-full">
-                    <h3 className="text-2xl font-display font-bold text-white mb-4">{regions[3].name}</h3>
-                    <div className="inline-flex items-center text-white border border-white/30 rounded-full px-6 py-2 backdrop-blur-md group-hover:bg-white group-hover:text-black transition-all duration-300">
+                  <div className="absolute bottom-0 left-0 p-4 md:p-8 z-20 w-full">
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-display font-bold text-white mb-2 md:mb-4">{regions[3].name}</h3>
+                    <div className="inline-flex items-center text-white border border-white/30 rounded-full px-4 py-1.5 md:px-6 md:py-2 text-xs md:text-sm backdrop-blur-md group-hover:bg-white group-hover:text-black transition-all duration-300">
                       Explore Packages <ArrowRight className="ml-2 w-4 h-4" />
                     </div>
                   </div>
@@ -166,7 +166,7 @@ export function RegionGrid() {
           </div>
 
           {/* East India - Half Width Banner */}
-          <div className="md:col-span-6 h-[220px] md:h-[280px]">
+          <div className="md:col-span-6 h-[160px] sm:h-[200px] md:h-[280px]">
             <Link href={`/region/${regions[4].id}`}>
               <a className="block h-full">
                 <motion.div 
@@ -175,7 +175,7 @@ export function RegionGrid() {
                   viewport={{ once: true }}
                   transition={{ delay: 0.5 }}
                   whileHover={{ scale: 1.01 }}
-                  className="relative h-full rounded-3xl overflow-hidden group cursor-pointer shadow-2xl"
+                  className="relative h-full rounded-2xl md:rounded-3xl overflow-hidden group cursor-pointer shadow-xl md:shadow-2xl"
                 >
                   <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors z-10" />
                   <img 
@@ -183,10 +183,10 @@ export function RegionGrid() {
                     alt={regions[4].name} 
                     className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 flex flex-col items-center justify-center z-20 text-center p-6 gap-4">
-                    <span className="text-white/90 uppercase tracking-[0.2em] text-sm font-bold mb-2">Mist-Covered Valleys</span>
-                    <h3 className="text-4xl md:text-6xl font-display font-bold text-white mb-2 md:mb-4">{regions[4].name}</h3>
-                    <div className="inline-flex items-center justify-center text-white border border-white/30 rounded-full px-6 py-2 backdrop-blur-md group-hover:bg-white group-hover:text-black transition-all duration-300">
+                  <div className="absolute inset-0 flex flex-col items-center justify-center z-20 text-center p-4 md:p-6 gap-2 md:gap-4">
+                    <span className="text-white/90 uppercase tracking-[0.15em] md:tracking-[0.2em] text-[10px] md:text-sm font-bold">Mist-Covered Valleys</span>
+                    <h3 className="text-2xl sm:text-3xl md:text-6xl font-display font-bold text-white">{regions[4].name}</h3>
+                    <div className="inline-flex items-center justify-center text-white border border-white/30 rounded-full px-4 py-1.5 md:px-6 md:py-2 text-xs md:text-sm backdrop-blur-md group-hover:bg-white group-hover:text-black transition-all duration-300">
                       Explore Packages <ArrowRight className="ml-2 w-4 h-4" />
                     </div>
                   </div>
@@ -196,7 +196,7 @@ export function RegionGrid() {
           </div>
 
           {/* International - Half Width Banner */}
-          <div className="md:col-span-6 h-[220px] md:h-[280px]">
+          <div className="md:col-span-6 h-[160px] sm:h-[200px] md:h-[280px]">
             <Link href={`/region/${regions[5].id}`}>
               <a className="block h-full">
                 <motion.div 
@@ -205,7 +205,7 @@ export function RegionGrid() {
                   viewport={{ once: true }}
                   transition={{ delay: 0.55 }}
                   whileHover={{ scale: 1.01 }}
-                  className="relative h-full rounded-3xl overflow-hidden group cursor-pointer shadow-2xl"
+                  className="relative h-full rounded-2xl md:rounded-3xl overflow-hidden group cursor-pointer shadow-xl md:shadow-2xl"
                 >
                   <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors z-10" />
                   <img 
@@ -213,10 +213,10 @@ export function RegionGrid() {
                     alt={regions[5].name} 
                     className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 flex flex-col items-center justify-center z-20 text-center p-6 gap-4">
-                    <span className="text-white/90 uppercase tracking-[0.2em] text-sm font-bold mb-2">Go Beyond Borders</span>
-                    <h3 className="text-4xl md:text-6xl font-display font-bold text-white mb-2 md:mb-4">{regions[5].name}</h3>
-                    <div className="inline-flex items-center justify-center text-white border border-white/30 rounded-full px-6 py-2 backdrop-blur-md group-hover:bg-white group-hover:text-black transition-all duration-300">
+                  <div className="absolute inset-0 flex flex-col items-center justify-center z-20 text-center p-4 md:p-6 gap-2 md:gap-4">
+                    <span className="text-white/90 uppercase tracking-[0.15em] md:tracking-[0.2em] text-[10px] md:text-sm font-bold">Go Beyond Borders</span>
+                    <h3 className="text-2xl sm:text-3xl md:text-6xl font-display font-bold text-white">{regions[5].name}</h3>
+                    <div className="inline-flex items-center justify-center text-white border border-white/30 rounded-full px-4 py-1.5 md:px-6 md:py-2 text-xs md:text-sm backdrop-blur-md group-hover:bg-white group-hover:text-black transition-all duration-300">
                       Explore Packages <ArrowRight className="ml-2 w-4 h-4" />
                     </div>
                   </div>

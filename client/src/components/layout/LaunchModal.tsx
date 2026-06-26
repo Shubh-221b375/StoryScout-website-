@@ -1,4 +1,5 @@
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { LAUNCHING_SOON_LABEL } from "@/lib/packageUtils";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Calendar, Info } from "lucide-react";
@@ -26,7 +27,6 @@ export function LaunchModal({ open, onOpenChange, onEnquireClick, packageTitle }
         </DialogHeader>
 
         <div className="space-y-6 py-4">
-          {/* Icon and Message */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -38,23 +38,22 @@ export function LaunchModal({ open, onOpenChange, onEnquireClick, packageTitle }
                 <Calendar className="w-12 h-12 text-accent" />
               </div>
             </div>
-            
+
             <h3 className="text-2xl font-display font-bold text-white">
-              Launching in February 2026
+              {LAUNCHING_SOON_LABEL}
             </h3>
-            
+
             {packageTitle && (
               <p className="text-white/90 text-lg">
                 <span className="font-semibold">{packageTitle}</span> will be available for booking soon!
               </p>
             )}
-            
+
             <p className="text-white/80 text-sm leading-relaxed">
               We're putting the finishing touches on this amazing adventure. Stay tuned for updates and be among the first to experience it!
             </p>
           </motion.div>
 
-          {/* Action Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -68,7 +67,7 @@ export function LaunchModal({ open, onOpenChange, onEnquireClick, packageTitle }
               <Info className="w-5 h-5" />
               Enquire Now
             </Button>
-            
+
             <Button
               variant="outline"
               onClick={() => onOpenChange(false)}
@@ -93,4 +92,3 @@ export function LaunchModal({ open, onOpenChange, onEnquireClick, packageTitle }
     </Dialog>
   );
 }
-

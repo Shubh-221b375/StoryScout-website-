@@ -5,6 +5,7 @@ import { Footer } from "@/components/layout/Footer";
 import { EnquireModal } from "@/components/layout/EnquireModal";
 import { BookingModal } from "@/components/layout/BookingModal";
 import { usePackage } from "@/hooks/use-site-data";
+import { isLaunchingSoon, LAUNCHING_SOON_LABEL, showOriginalPrice } from "@/lib/packageUtils";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { MapPin, CheckCircle, Clock, Info, Download } from "lucide-react";
@@ -63,9 +64,9 @@ export default function PackageDetail() {
                 <span className="bg-accent text-white px-3 py-1 rounded-full text-sm font-bold inline-block">
                   {pkg.region}
                 </span>
-                {pkg.region !== 'Trekking' && (
+                {isLaunchingSoon(pkg) && (
                   <span className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-bold inline-block">
-                    Launching in February 2026
+                    {LAUNCHING_SOON_LABEL}
                   </span>
                 )}
               </div>
@@ -192,9 +193,9 @@ export default function PackageDetail() {
               <div className="mb-6">
                 <span className="text-muted-foreground text-sm">Starting price per person</span>
                 <div className="mt-1 flex items-baseline gap-3">
-                  {pkg.originalPrice && pkg.originalPrice > pkg.price && (
-                    <span className="text-lg text-muted-foreground line-through">
-                      ₹{pkg.originalPrice.toLocaleString()}
+                  {showOriginalPrice(pkg) && (
+                    <span className="text-base md:text-lg text-muted-foreground line-through">
+                      ₹{pkg.originalPrice!.toLocaleString()}
                     </span>
                   )}
                   <span className="text-3xl font-bold text-primary">

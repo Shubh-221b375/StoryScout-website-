@@ -43,7 +43,7 @@ export default function RegionPage() {
       <Navbar />
       
       {/* Region Hero */}
-      <div className="relative h-[50vh] w-full overflow-hidden flex items-center justify-center">
+      <div className="relative h-[35vh] sm:h-[40vh] md:h-[50vh] w-full overflow-hidden flex items-center justify-center">
         <div className="absolute inset-0 bg-black/40 z-10" />
         <img 
           src={regionInfo.image} 
@@ -54,7 +54,7 @@ export default function RegionPage() {
           <motion.h1 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-5xl md:text-7xl font-display font-bold mb-4"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-display font-bold mb-3 md:mb-4"
           >
             {regionInfo.name}
           </motion.h1>
@@ -70,8 +70,8 @@ export default function RegionPage() {
       </div>
 
       {/* Packages Grid */}
-      <div className="container mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="container mx-auto px-4 py-10 md:py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
           {filteredPackages.map((pkg) => (
             <PackageCard key={pkg.id} pkg={pkg} />
           ))}

@@ -95,8 +95,8 @@ export default async function runApp(
     host: "0.0.0.0",
   };
 
-  // Windows does not support SO_REUSEPORT; conditionally enable where available.
-  if (process.platform !== "win32") {
+  // Windows and some cloud hosts do not support SO_REUSEPORT.
+  if (process.platform !== "win32" && process.env.RENDER !== "true") {
     listenOptions.reusePort = true;
   }
 

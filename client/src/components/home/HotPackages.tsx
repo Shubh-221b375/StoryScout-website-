@@ -154,7 +154,7 @@ const Card3D = ({ pkg }: { pkg: (typeof packages)[0] }) => {
 };
 
 export function HotPackages() {
-  const hotPackages = packages.filter((p) => p.isHot);
+  const hotPackages = packages.filter((p) => p.isHot && !isLaunchingSoon(p));
 
   return (
     <section className="pt-6 md:pt-8 pb-12 md:pb-24 bg-background overflow-hidden relative">

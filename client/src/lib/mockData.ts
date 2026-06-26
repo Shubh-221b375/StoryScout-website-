@@ -237,6 +237,7 @@ const basePackages: Package[] = [
       'Well-organized and safe: All logistics including permits, meals, accommodation, and expert guidance are included, ensuring a safe and hassle-free trekking experience.',
     ],
     discount: 11,
+    isHot: true,
   },
   {
     id: 'chandrakhani-pass',
@@ -313,6 +314,7 @@ const basePackages: Package[] = [
       'All-inclusive logistics: From Manali pickup to meals, permits, accommodation, and expert guidance, everything is organized for a seamless and safe trekking experience.',
     ],
     discount: 14,
+    isHot: true,
   },
   {
     id: 'kuari-pass',
@@ -395,6 +397,7 @@ const basePackages: Package[] = [
       'All-inclusive package: From Rishikesh pickup to meals, permits, accommodation, and expert guidance, everything is organized for a seamless and safe trekking experience.',
     ],
     discount: 12,
+    isHot: true,
   },
   {
     id: 'pangarchulla-kuari-pass',
@@ -489,6 +492,7 @@ const basePackages: Package[] = [
       'Expert guidance: With certified leaders and technical guides, you receive professional support throughout the challenging sections, ensuring safety and success.',
     ],
     discount: 15,
+    isHot: true,
   },
   {
     id: 'brahmatal-trek',
@@ -571,6 +575,7 @@ const basePackages: Package[] = [
       'Cultural immersion: The journey takes you through traditional Garhwal villages, allowing you to experience local culture and the warm hospitality of mountain communities during the winter season.',
     ],
     discount: 26,
+    isHot: true,
   },
   {
     id: 'himalayan-trek',
@@ -589,7 +594,6 @@ const basePackages: Package[] = [
       { day: 4, title: 'Summit Push Day', description: 'The challenging early morning climb to the summit at 14,000ft. Experience the most incredible sunrise from the peak with panoramic views of surrounding peaks. Return to base camp.' },
       { day: 5, title: 'Descent and Rest', description: 'Descend safely to the lower base camp. Rest and recover from the summit push.' },
     ],
-    isHot: true,
   },
   {
     id: 'ladakh-adventure',
@@ -608,7 +612,6 @@ const basePackages: Package[] = [
       { day: 4, title: 'Pangong Lake Adventure', description: 'Full day ride to Pangong Lake (14,270 ft) - one of the highest lakes in the world. Crystal clear waters with changing colors throughout the day. Camp by the lake or return to Leh.' },
       { day: 5, title: 'Biking Expeditions', description: 'Explore more high-altitude passes and villages. Visit remote monasteries. Experience pristine mountain terrain and local culture.' },
     ],
-    isHot: true,
     discount: 10,
   },
   {
@@ -647,7 +650,6 @@ const basePackages: Package[] = [
       { day: 5, title: 'Bioluminescent Beach & Water Activities', description: 'Witness magical bioluminescent plankton at night beach. Day activities include kayaking through mangroves or island hopping by speedboat.' },
       { day: 6, title: 'Departure', description: 'Final beach time. Return ferry to Port Blair. Depart with unforgettable memories.' },
     ],
-    isHot: true,
   },
   {
     id: 'darjeeling-delight',
@@ -726,7 +728,6 @@ const basePackages: Package[] = [
       { day: 1, title: 'Arrival', description: 'Transfer to Ubud.' },
       { day: 2, title: 'Ubud Tour', description: 'Rice terraces and swing.' },
     ],
-    isHot: true,
   },
   {
     id: 'maldives-luxury',
@@ -758,7 +759,6 @@ const basePackages: Package[] = [
       { day: 1, title: 'Da Nang', description: 'Arrival and Golden Bridge.' },
       { day: 2, title: 'Hoi An', description: 'Walking tour.' },
     ],
-    isHot: true,
   },
 ];
 

@@ -1,0 +1,90 @@
+Build a fully functional, modern, and highly interactive travel packages website for the startup "StoryScout." The site’s UI should be inspired by the attached webpage screenshots and must exceed the look and animation quality of major Indian travel sites.
+
+Features and Requirements:
+
+Homepage:
+
+Clean hero section with regional choices (e.g., North India, South India, East, West, Foreign countries) displayed as large, interactive, animated cards resembling those in the given screenshots.
+
+Clicking a region card navigates to a dedicated region page listing available packages.
+
+Region Pages:
+
+Each region page (e.g. "North India Treks") should show cards/grids of all relevant packages under that region.
+
+Packages listed must be grouped as follows:
+
+North India: Kedarkantha, Brahmatal, Kuari Pass, Pangarchulla & Kuari Pass, Tungnath & Deoriatal
+
+West India: Yulla Kanda
+
+Special Offers/Featured: Hampta Pass with Chandratal
+(Update these groups as per actual PDF content for each trek; add East, South, Foreign if/when content is provided.)
+
+Package Pages:
+
+Each trek/tour card links to a comprehensive package detail page.
+
+Populate these pages using EXACT content from the provided PDFs (itinerary, highlights, inclusions, etc.).
+
+Use modern, space-rich layouts and support for PDF images, sections, and any highlight or pricing data.
+
+Support animated transitions, responsive tabs/sections for itinerary, pricing, "Why choose this trek?", FAQ, and payment/cancellation policy.
+
+Visuals and Animations:
+
+Incorporate eye-catching 3D effects and smooth transitions—use libraries like Three.js or Lottie for genuine visual wow factor.
+
+Use the provided images for each destination as package thumbnails or hero images.
+
+The color scheme, section separation, heading hierarchy, shadows, and cards should match the style in the StoryScout screenshots.
+
+Booking Section:
+
+Add a functional contact/booking form on each package page, including WhatsApp and Instagram links, and support for call-to-action buttons.
+
+Optionally, include an FAQ, payment details, and bank/UPI QR integration as per PDF.
+
+All package pricing, date/departure info, and contact details should match the PDFs.
+
+Responsive and Back-End Ready:
+
+Ensure the website is mobile-optimized and ready for deployment.
+
+Load package data from a backend-compatible JSON/data file for easy updates, mirroring the structure given in your PDFs.
+
+Content Mapping Guide:
+
+Use the following PDFs for region/package content and copy their titles, descriptions, itinerary, pricing, and policies directly:
+
+"Brahmatal-Trek-Itinerary.pdf" (Brahmatal, North)
+
+"Yulla-Kanda-Ex.-Delhi.pdf" (Yulla Kanda, West)
+
+"Tungnath-Deoriatal-Itinerary.pdf" (Tungnath & Deoriatal, North)
+
+"Hampta-Pass-X-Chandratal-StoryScout.pdf" (Hampta Pass with Chandratal, Featured)
+
+"Pangarchulla-Kauri-Pass-StoryScout.pdf" (Pangarchulla & Kuari Pass, North)
+
+"Kedarkantha-Trek.pdf" (Kedarkantha, North)
+
+"Kuari-Pass-StoryScout.pdf" (Kuari Pass, North)
+
+Design Direction:
+
+UI/UX should match your attached web page screenshot, with a modern, premium feel.
+
+All navigation, page state, and UI sections must support smooth/animated transitions.
+
+Section headings: "Trending Now", "Exclusive Offers", "Why Travel With StoryScout?", and "Captured Moments" as per screenshot and content organization.
+
+Ensure correct and region-appropriate grouping of all packages.
+
+Final Instructions:
+
+The website must be ready to deploy, fully functional, and easy for your team to update with new packages, regions, or images.
+
+Code must be clean and modular, commenting where helpful, with deploy instructions.
+
+All content should be loaded dynamically and exactly from provided PDFs where possible.

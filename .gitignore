@@ -1,0 +1,7 @@
+node_modules/
+.local/
+dist/
+server/public/
+.env
+*.log
+drizzle/meta/

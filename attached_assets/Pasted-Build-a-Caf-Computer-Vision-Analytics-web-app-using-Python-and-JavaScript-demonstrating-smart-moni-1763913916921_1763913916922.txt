@@ -1,0 +1,45 @@
+Build a Café Computer Vision Analytics web app using Python and JavaScript, demonstrating smart monitoring through CCTV streams. The app should include:
+
+Video Stream Processing: Read live RTSP video streams or webcam input using OpenCV.
+
+PPE Detection: Use YOLOv8 (or pre-trained YOLO model) to detect mask, glove, and hairnet compliance among staff.
+
+Queue & Visitor Analytics: Count people in queue areas, trigger alerts if crowd limit or wait time thresholds are exceeded. Track entries/exits and dwell time.
+
+Hygiene Event Detection: Identify dirty tables, missing PPE, or improper behavior from staff, and log these with timestamps and snapshots.
+
+Event Logging: Store all detected violations, queue breaches, and hygiene events in a local SQLite database.
+
+Web Dashboard: Create a dashboard using Flask (Python backend) and React (JavaScript frontend) to:
+
+Show live video with detection overlays
+
+Display a real-time alert feed
+
+List all logged events with images and timestamps
+
+Provide a summary chart (bar or pie chart) showing the frequency or count of each detected use case, updated live or on page refresh
+
+Technologies required: Python, OpenCV, ultralytics-YOLO, Flask, Socket.IO (for live alerts), SQLite (data storage), ReactJS (dashboard). All code should be runnable on Replit, with setup and run instructions.
+
+Requirements:
+
+Prioritize 12–15 impactful use cases from PPE, queue, hygiene, and visitor analytics from the attached cafe scenario list.
+
+Include clear comments and modular code for easy extension.
+
+The solution should run start-to-finish on Replit with minimal user intervention, demonstrating all main features in real time or with sample data.
+
+Delivery:
+
+Python code for video/data processing and model inference
+
+Flask backend for serving data/events
+
+React frontend with dashboard layout and summary charts
+
+Instructions for installing dependencies and running the app
+
+Demo-ready code structure and sample outputs
+
+Build the solution so a café owner can demo and review smart monitoring features, live statistics, and actionable event frequency insights from a single web dashboard.

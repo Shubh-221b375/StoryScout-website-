@@ -19,6 +19,11 @@ export function log(message: string, source = "express") {
 
 export const app = express();
 
+// Render (and most hosts) terminate TLS in front of Node — required for secure session cookies.
+if (process.env.NODE_ENV === "production") {
+  app.set("trust proxy", 1);
+}
+
 declare module 'http' {
   interface IncomingMessage {
     rawBody: unknown

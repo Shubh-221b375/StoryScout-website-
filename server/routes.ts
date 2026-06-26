@@ -19,6 +19,9 @@ async function attachUser(req: Request, _res: Response, next: NextFunction) {
     if (user) {
       (req as Request & { currentUser?: ReturnType<typeof toPublicUser> }).currentUser =
         toPublicUser(user);
+    } else {
+      // Session survived a deploy but the user store was reset — clear stale cookie.
+      req.session.destroy(() => {});
     }
   }
   next();
@@ -31,8 +34,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.get("/api/auth/me", (req, res) => {
     const user = (req as Request & { currentUser?: ReturnType<typeof toPublicUser> })
       .currentUser;
-    if (!user) return res.status(401).json({ error: "Not authenticated" });
-    res.json(user);
+    res.json(user ?? null);
   });
 
   app.post("/api/auth/register", async (req, res) => {

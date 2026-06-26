@@ -53,7 +53,11 @@ export const getQueryFn: <T>(options: {
     }
 
     await throwIfResNotOk(res);
-    return await res.json();
+    const data = await res.json();
+    if (unauthorizedBehavior === "returnNull" && data === null) {
+      return null;
+    }
+    return data;
   };
 
 export const queryClient = new QueryClient({

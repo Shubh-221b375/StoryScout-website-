@@ -5,3 +5,8 @@ server/public/
 .env
 *.log
 drizzle/meta/
+
+# Large media — host externally (Supabase Storage, Cloudflare R2, etc.)
+attached_assets/**/*.mp4
+attached_assets/**/*.mov
+attached_assets/**/*.webm

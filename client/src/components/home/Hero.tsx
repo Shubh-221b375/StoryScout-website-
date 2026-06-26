@@ -1,7 +1,10 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
-import bgVideo from "@assets/bg_video_1763829371002.mp4";
+
+const HERO_VIDEO_URL =
+  import.meta.env.VITE_HERO_VIDEO_URL?.trim() ||
+  "https://yojzhktrfehcfaxkckfi.supabase.co/storage/v1/object/public/media/bg_video_1763829371002%20(1).mp4";
 
 export function Hero() {
   const { scrollY } = useScroll();
@@ -21,7 +24,7 @@ export function Hero() {
       >
         <div className="absolute inset-0 bg-black/40 z-10" />
         <video
-          src={bgVideo}
+          src={HERO_VIDEO_URL}
           autoPlay
           muted
           loop

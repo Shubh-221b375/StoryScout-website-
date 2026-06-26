@@ -5,7 +5,7 @@ import { Menu, X, LogIn, LayoutDashboard, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { EnquireModal } from "./EnquireModal";
 import { useAuth } from "@/hooks/use-auth";
-import logo from "@assets/logo_1763751397591.png";
+import { SITE_LOGO } from "@/lib/siteAssets";
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -49,7 +49,7 @@ export function Navbar() {
         <Link href="/">
           <a className="flex items-center h-full">
             <img 
-              src={logo} 
+              src={SITE_LOGO} 
               alt="StoryScout Logo" 
               className="h-20 w-auto"
             />

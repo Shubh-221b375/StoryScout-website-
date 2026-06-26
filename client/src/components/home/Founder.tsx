@@ -1,10 +1,4 @@
 import { motion } from "framer-motion";
-import founderPortrait from "@assets/generated_images/professional_portrait_of_indian_man_black_and_white.png";
-import trekImage1 from "@assets/generated_images/man_trekking_in_himalayas_side_profile.png";
-import flagImage1 from "@assets/generated_images/man_holding_indian_flag_on_snowy_mountain.png";
-import flagImage2 from "@assets/generated_images/man_holding_indian_flag_on_sunny_mountain_top.png";
-import trekImage2 from "@assets/generated_images/man_posing_on_mountain_peak.png";
-import founderBackground from "@assets/generated_images/mountain_adventure_founder_background.png";
 import { Sparkles, MapPin, Heart } from "lucide-react";
 
 export function Founder() {

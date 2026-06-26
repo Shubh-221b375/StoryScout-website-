@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Instagram, Mail, MapPin, Phone, MessageCircle, Youtube } from "lucide-react";
 import { companyConfig } from "@/lib/companyConfig";
-import logo from "@assets/logo_1763751397591.png";
+import { SITE_LOGO } from "@/lib/siteAssets";
 
 export function Footer() {
   return (
@@ -10,7 +10,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           <div className="space-y-4">
             <img 
-              src={logo} 
+              src={SITE_LOGO} 
               alt="StoryScout Logo" 
               className="h-20 w-auto mb-4"
             />

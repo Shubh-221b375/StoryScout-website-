@@ -16,10 +16,12 @@ export default defineConfig({
   build: {
     outDir: path.resolve(import.meta.dirname, "server", "public"),
     emptyOutDir: true,
+    copyPublicDir: true,
   },
   server: {
     fs: {
       strict: true,
+      allow: [path.resolve(import.meta.dirname, "attached_assets")],
       deny: ["**/.*"],
     },
   },

@@ -8,7 +8,7 @@ import { Footer } from "@/components/layout/Footer";
 import { motion } from "framer-motion";
 import { Gallery } from "@/components/home/Gallery";
 import { ReviewsPreview } from "@/components/home/ReviewsPreview";
-import collageBackground from "@assets/generated_images/travel_adventure_photo_collage_background.png";
+import { GENERATED_IMAGES } from "@/lib/siteAssets";
 import { CheckCircle } from "lucide-react";
 
 export default function Home() {
@@ -33,7 +33,7 @@ export default function Home() {
         <section 
           className="py-16 md:py-32 relative overflow-hidden"
           style={{
-            backgroundImage: `url(${collageBackground})`,
+            backgroundImage: `url(${GENERATED_IMAGES.collage})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundAttachment: "fixed"

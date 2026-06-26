@@ -1,19 +1,18 @@
-import heroImage from '@assets/generated_images/cinematic_hiker_on_mountain_ridge_at_sunrise.png';
-import northImage from '@assets/generated_images/snow_capped_himalayan_mountains.png';
-import southImage from '@assets/generated_images/kerala_backwaters_with_houseboat.png';
-import eastImage from '@assets/generated_images/darjeeling_tea_gardens.png';
-import westImage from '@assets/generated_images/jaisalmer_desert_dunes.png';
-import foreignImage from '@assets/generated_images/santorini_greece_street.png';
-
-// New Images
-import ladakhImage from '@assets/generated_images/ladakh_biker_on_magnetic_hill.png';
-import goaImage from '@assets/generated_images/goa_beach_party_sunset.png';
-import andamanImage from '@assets/generated_images/andaman_scuba_diving_coral_reef.png';
-import baliImage from '@assets/generated_images/bali_swing_over_rice_terrace.png';
-import maldivesImage from '@assets/generated_images/maldives_water_villa_aerial.png';
-import vietnamImage from '@assets/generated_images/vietnam_golden_bridge_hands.png';
-
+import { GENERATED_IMAGES } from "@/lib/siteAssets";
 import { trekAssets } from "@/lib/trekAssets";
+
+const heroImage = GENERATED_IMAGES.hero;
+const northImage = GENERATED_IMAGES.north;
+const southImage = GENERATED_IMAGES.south;
+const eastImage = GENERATED_IMAGES.east;
+const westImage = GENERATED_IMAGES.west;
+const foreignImage = GENERATED_IMAGES.foreign;
+const ladakhImage = GENERATED_IMAGES.ladakh;
+const goaImage = GENERATED_IMAGES.goa;
+const andamanImage = GENERATED_IMAGES.andaman;
+const baliImage = GENERATED_IMAGES.bali;
+const maldivesImage = GENERATED_IMAGES.maldives;
+const vietnamImage = GENERATED_IMAGES.vietnam;
 
 export interface Package {
   id: string;

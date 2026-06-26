@@ -16,10 +16,11 @@ export async function serveStatic(app: Express, _server: Server) {
     );
   }
 
-  app.use(express.static(distPath));
+  app.use(express.static(distPath, { index: "index.html", fallthrough: true }));
 
-  // SPA fallback — serve index.html for client-side routes
-  app.get(/^(?!\/api).*/, (_req, res) => {
+  // SPA fallback — only for HTML navigations (not static files)
+  app.get(/^(?!\/api).*/, (req, res, next) => {
+    if (path.extname(req.path)) return next();
     res.sendFile(indexPath);
   });
 }

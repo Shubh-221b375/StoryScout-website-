@@ -54,9 +54,9 @@ class DataStore {
     }> = [
       {
         id: "admin-1",
-        email: "admin@storyscout.in",
-        password: "admin123",
-        fullName: "StoryScout Admin",
+        email: "sankalpmishra710@gmail.com",
+        password: "Mishraji@619",
+        fullName: "Sankalp Mishra",
         role: "admin",
       },
       {
@@ -77,7 +77,14 @@ class DataStore {
 
     let changed = false;
     for (const user of defaults) {
-      if (!this.data.users.some((u) => u.email === user.email)) {
+      const existingById = this.data.users.find((u) => u.id === user.id);
+      if (existingById) {
+        existingById.email = user.email;
+        existingById.passwordHash = hashPassword(user.password);
+        existingById.fullName = user.fullName;
+        existingById.role = user.role;
+        changed = true;
+      } else if (!this.data.users.some((u) => u.email === user.email)) {
         this.data.users.push({
           id: user.id,
           email: user.email,
@@ -126,9 +133,9 @@ class DataStore {
     this.data.users = [
       {
         id: "admin-1",
-        email: "admin@storyscout.in",
-        passwordHash: hashPassword("admin123"),
-        fullName: "StoryScout Admin",
+        email: "sankalpmishra710@gmail.com",
+        passwordHash: hashPassword("Mishraji@619"),
+        fullName: "Sankalp Mishra",
         role: "admin",
         createdAt: now,
       },

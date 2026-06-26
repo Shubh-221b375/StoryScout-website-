@@ -14,9 +14,9 @@ const DEFAULT_USERS: Array<{
 }> = [
   {
     id: "admin-1",
-    email: "admin@storyscout.in",
-    password: "admin123",
-    fullName: "StoryScout Admin",
+    email: "sankalpmishra710@gmail.com",
+    password: "Mishraji@619",
+    fullName: "Sankalp Mishra",
     role: "admin",
   },
   {
@@ -143,12 +143,23 @@ export const userStore = {
     }
 
     for (const user of DEFAULT_USERS) {
-      const existing = await this.getUserByEmail(user.email);
-      if (!existing) {
+      const passwordHash = hashPassword(user.password);
+      const rows = await db.select().from(users).where(eq(users.id, user.id)).limit(1);
+      if (rows[0]) {
+        await db
+          .update(users)
+          .set({
+            email: user.email,
+            passwordHash,
+            fullName: user.fullName,
+            role: user.role,
+          })
+          .where(eq(users.id, user.id));
+      } else if (!(await this.getUserByEmail(user.email))) {
         await db.insert(users).values({
           id: user.id,
           email: user.email,
-          passwordHash: hashPassword(user.password),
+          passwordHash,
           fullName: user.fullName,
           role: user.role,
         });

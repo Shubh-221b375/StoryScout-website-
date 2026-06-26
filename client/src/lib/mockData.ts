@@ -236,6 +236,7 @@ const basePackages: Package[] = [
       'Cultural experience: The trek takes you through traditional mountain villages, allowing you to experience local culture and the warm hospitality of the Garhwal region.',
       'Well-organized and safe: All logistics including permits, meals, accommodation, and expert guidance are included, ensuring a safe and hassle-free trekking experience.',
     ],
+    discount: 11,
   },
   {
     id: 'chandrakhani-pass',
@@ -311,6 +312,7 @@ const basePackages: Package[] = [
       'Stunning campsites: The campsites at Ghohan Krari and Chaklani offer some of the most beautiful locations in the region, with incredible sunset views and starry night skies.',
       'All-inclusive logistics: From Manali pickup to meals, permits, accommodation, and expert guidance, everything is organized for a seamless and safe trekking experience.',
     ],
+    discount: 14,
   },
   {
     id: 'kuari-pass',
@@ -392,6 +394,7 @@ const basePackages: Package[] = [
       'Cultural experience: The journey takes you through traditional Garhwal villages and past important pilgrimage sites, offering insights into the local culture and way of life.',
       'All-inclusive package: From Rishikesh pickup to meals, permits, accommodation, and expert guidance, everything is organized for a seamless and safe trekking experience.',
     ],
+    discount: 12,
   },
   {
     id: 'pangarchulla-kuari-pass',
@@ -485,6 +488,7 @@ const basePackages: Package[] = [
       'Well-planned acclimatization: The 7-day format allows for proper acclimatization, ensuring you\'re well-prepared for both the pass crossing and the summit attempt.',
       'Expert guidance: With certified leaders and technical guides, you receive professional support throughout the challenging sections, ensuring safety and success.',
     ],
+    discount: 15,
   },
   {
     id: 'brahmatal-trek',
@@ -566,6 +570,7 @@ const basePackages: Package[] = [
       'Well-organized logistics: All permits, meals, transport from Rishikesh, accommodation, and expert winter trekking guidance are included, ensuring a safe and hassle-free experience.',
       'Cultural immersion: The journey takes you through traditional Garhwal villages, allowing you to experience local culture and the warm hospitality of mountain communities during the winter season.',
     ],
+    discount: 26,
   },
   {
     id: 'himalayan-trek',

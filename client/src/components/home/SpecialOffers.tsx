@@ -2,14 +2,14 @@ import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { ArrowRight, Percent, Timer, MapPin, Clock, Users } from "lucide-react";
 import { packages } from "@/lib/mockData";
-import { isLaunchingSoon, LAUNCHING_SOON_LABEL } from "@/lib/packageUtils";
+import { getDiscountPercent, hasOffer, isLaunchingSoon, LAUNCHING_SOON_LABEL, showDiscount } from "@/lib/packageUtils";
 import { useState } from "react";
 
 const OfferCard = ({ pkg }: { pkg: (typeof packages)[0] }) => {
   const [isHovered, setIsHovered] = useState(false);
   const launchingSoon = isLaunchingSoon(pkg);
-  const showDiscount =
-    !launchingSoon && pkg.discount && pkg.originalPrice && pkg.originalPrice > pkg.price;
+  const discountPercent = getDiscountPercent(pkg);
+  const showDiscountBadge = showDiscount(pkg);
 
   return (
     <motion.div
@@ -26,9 +26,9 @@ const OfferCard = ({ pkg }: { pkg: (typeof packages)[0] }) => {
       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
 
       <div className="absolute top-2 right-2 md:top-4 md:right-4 z-20 flex flex-col gap-1.5 md:gap-2 items-end">
-        {showDiscount && (
+        {showDiscountBadge && (
           <div className="bg-red-500 text-white font-bold px-2 py-0.5 md:px-3 md:py-1 shadow-lg rounded-md md:rounded-lg text-[10px] md:text-xs flex items-center gap-1">
-            <Percent className="w-2.5 h-2.5 md:w-3 md:h-3" /> {pkg.discount}% OFF
+            <Percent className="w-2.5 h-2.5 md:w-3 md:h-3" /> {discountPercent}% OFF
           </div>
         )}
         {launchingSoon && (
@@ -49,7 +49,7 @@ const OfferCard = ({ pkg }: { pkg: (typeof packages)[0] }) => {
         </h3>
         <div className="flex items-center justify-between mt-2 md:mt-4 gap-2">
           <span className="flex items-baseline gap-1.5 md:gap-2 min-w-0">
-            {showDiscount && (
+            {showDiscountBadge && pkg.originalPrice && (
               <span className="text-[10px] sm:text-xs md:text-sm text-white/80 line-through shrink-0">
                 ₹{pkg.originalPrice!.toLocaleString()}
               </span>
@@ -120,7 +120,7 @@ const OfferCard = ({ pkg }: { pkg: (typeof packages)[0] }) => {
 };
 
 export function SpecialOffers() {
-  const discountedPackages = packages.filter((p) => p.discount && !isLaunchingSoon(p));
+  const discountedPackages = packages.filter(hasOffer);
 
   return (
     <section className="py-12 md:py-20 bg-primary text-primary-foreground relative overflow-hidden">

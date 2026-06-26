@@ -14,6 +14,7 @@ const required = [
   "logo.png",
   "generated_images/cinematic_hiker_on_mountain_ridge_at_sunrise.png",
   "trek_assets/kedarkantha-trek/cover.jpg",
+  "logo.png",
   "favicon.png",
 ];
 

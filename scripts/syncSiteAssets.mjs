@@ -34,6 +34,7 @@ if (!(await fs.stat(logoSrc).catch(() => null))) {
 }
 
 await copyFile(logoSrc, path.join(publicRoot, "logo.png"));
+await copyFile(logoSrc, path.join(publicRoot, "favicon.png"));
 await copyDir(generatedSrc, path.join(publicRoot, "generated_images"));
 
-console.log("Synced logo and generated_images to client/public/");
+console.log("Synced logo, favicon, and generated_images to client/public/");

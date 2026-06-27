@@ -1,17 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { ArrowUp, Instagram } from "lucide-react";
 import { companyConfig } from "@/lib/companyConfig";
-
-function buildWhatsAppUrl(message: string) {
-  try {
-    const url = new URL(companyConfig.social.whatsappLink);
-    url.searchParams.set("text", message);
-    return url.toString();
-  } catch {
-    // Fallback if URL parsing fails for any reason
-    return `${companyConfig.social.whatsappLink}?text=${encodeURIComponent(message)}`;
-  }
-}
+import { buildWhatsAppUrl } from "@/lib/whatsapp";
 
 export function FloatingActions() {
   const [showTop, setShowTop] = useState(false);

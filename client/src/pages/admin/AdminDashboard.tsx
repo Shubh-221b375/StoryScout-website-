@@ -106,9 +106,9 @@ export default function AdminDashboard() {
 
   return (
     <AdminLayout>
-      <div className="mb-8">
-        <h1 className="text-3xl font-display font-bold">Dashboard</h1>
-        <p className="text-muted-foreground mt-1">
+      <div className="mb-6 sm:mb-8">
+        <h1 className="font-display text-2xl font-bold sm:text-3xl">Dashboard</h1>
+        <p className="mt-1 text-sm text-muted-foreground sm:text-base">
           Overview of your website data and recent activity.
         </p>
       </div>
@@ -142,7 +142,7 @@ export default function AdminDashboard() {
               {stats.recentBookings.map((b) => (
                 <div
                   key={b.id}
-                  className="flex items-center justify-between p-3 rounded-lg border border-border"
+                  className="flex flex-col gap-2 rounded-lg border border-border p-3 sm:flex-row sm:items-center sm:justify-between"
                 >
                   <div>
                     <p className="font-medium">{b.fullName}</p>

@@ -3,6 +3,7 @@ import path from "node:path";
 import type {
   SiteBooking,
   SitePackage,
+  SitePrivateTourInquiry,
   SiteRegion,
   SiteReview,
   SiteUser,
@@ -16,6 +17,7 @@ interface StoreData {
   regions: SiteRegion[];
   reviews: SiteReview[];
   bookings: SiteBooking[];
+  privateTourInquiries: SitePrivateTourInquiry[];
   seeded: boolean;
 }
 
@@ -29,6 +31,7 @@ function defaultData(): StoreData {
     regions: [],
     reviews: [],
     bookings: [],
+    privateTourInquiries: [],
     seeded: false,
   };
 }
@@ -102,7 +105,12 @@ class DataStore {
   private load() {
     try {
       if (fs.existsSync(DATA_FILE)) {
-        this.data = JSON.parse(fs.readFileSync(DATA_FILE, "utf-8"));
+        const loaded = JSON.parse(fs.readFileSync(DATA_FILE, "utf-8")) as StoreData;
+        this.data = {
+          ...defaultData(),
+          ...loaded,
+          privateTourInquiries: loaded.privateTourInquiries ?? [],
+        };
       }
     } catch {
       this.data = defaultData();
@@ -332,6 +340,24 @@ class DataStore {
     this.data.bookings[index] = { ...this.data.bookings[index], ...updates, id };
     this.save();
     return this.data.bookings[index];
+  }
+
+  // Private tour enquiries
+  getPrivateTourInquiries() {
+    return this.data.privateTourInquiries;
+  }
+
+  createPrivateTourInquiry(
+    inquiry: Omit<SitePrivateTourInquiry, "id" | "createdAt">,
+  ): SitePrivateTourInquiry {
+    const item: SitePrivateTourInquiry = {
+      ...inquiry,
+      id: crypto.randomUUID(),
+      createdAt: new Date().toISOString(),
+    };
+    this.data.privateTourInquiries.unshift(item);
+    this.save();
+    return item;
   }
 
   getDashboardStats() {

@@ -54,15 +54,26 @@ function ScrollToTopOnRouteChange() {
   return null;
 }
 
+function AppShell() {
+  const [location] = useLocation();
+  const hideFloatingActions = location.startsWith("/admin");
+
+  return (
+    <>
+      <ScrollToTopOnRouteChange />
+      {!hideFloatingActions && <FloatingActions />}
+      <Router />
+    </>
+  );
+}
+
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
         <TooltipProvider>
           <Toaster />
-          <ScrollToTopOnRouteChange />
-          <FloatingActions />
-          <Router />
+          <AppShell />
         </TooltipProvider>
       </AuthProvider>
     </QueryClientProvider>

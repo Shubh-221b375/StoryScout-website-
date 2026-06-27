@@ -8,68 +8,54 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Checkbox } from "@/components/ui/checkbox";
 import { regions } from "@/lib/mockData";
-import { Calendar, Users, MapPin, DollarSign, Home, Car, Utensils, Mountain, Phone, Mail } from "lucide-react";
+import { Phone, Mail } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { apiRequest, parseApiError } from "@/lib/queryClient";
+import type { PrivateTourInquiryPayload } from "@shared/types";
+import {
+  emptyPrivateTourForm,
+  formatPrivateTourWhatsAppMessage,
+} from "@/lib/privateTourUtils";
+import { buildWhatsAppUrl } from "@/lib/whatsapp";
 
 export default function PrivateToursPage() {
   const { toast } = useToast();
-  const [formData, setFormData] = useState({
-    // Traveller Details
-    fullName: "",
-    email: "",
-    contactNumber: "",
-    cityState: "",
-    
-    // Group Composition
-    maleAdults: "",
-    femaleAdults: "",
-    kids0to5: "",
-    kids6to12: "",
-    others: "",
-    
-    // Trip Preferences (merged with Travel Style and Transport)
-    primaryDestination: "",
-    alternativeDestination: "",
-    tripStartDate: "",
-    numberOfDays: "",
-    flexibleDates: "",
-    travelStyle: "",
-    transportNeeded: "",
-    transportType: "",
-    
-    // Budget
-    budget: "",
-    
-    // Accommodation
-    accommodation: "",
-    roomType: "",
-    
-    // Meals
-    meals: "",
-    foodPreference: "",
-    
-    // Special Requirements
-    specialRequirements: "",
-    
-    // Final Touch Points
-    preferredCallBackTime: "",
-    howDidYouHear: "",
-  });
+  const [submitting, setSubmitting] = useState(false);
+  const [formData, setFormData] = useState<PrivateTourInquiryPayload>(emptyPrivateTourForm);
 
   const handleChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Form Submitted!",
-      description: "We'll get back to you soon with your customized itinerary.",
-    });
-    // Reset form or redirect
-    console.log("Form Data:", formData);
+    setSubmitting(true);
+
+    try {
+      const response = await apiRequest("POST", "/api/site/private-tours", formData);
+      const result = (await response.json()) as { sheetSynced?: boolean };
+
+      const whatsappUrl = buildWhatsAppUrl(formatPrivateTourWhatsAppMessage(formData));
+      window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+
+      toast({
+        title: "Enquiry submitted!",
+        description: result.sheetSynced
+          ? "Saved to our sheet. WhatsApp opened — tap Send to share your details with us."
+          : "WhatsApp opened — tap Send to share your details with us.",
+      });
+
+      setFormData(emptyPrivateTourForm);
+    } catch (error) {
+      toast({
+        title: "Could not submit enquiry",
+        description: parseApiError(error),
+        variant: "destructive",
+      });
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const destinationOptions = [
@@ -571,9 +557,10 @@ export default function PrivateToursPage() {
             <Button
               type="submit"
               size="lg"
+              disabled={submitting}
               className="w-full md:w-auto px-12 py-6 text-lg font-bold bg-primary hover:bg-primary/90"
             >
-              Get My Customised Itinerary
+              {submitting ? "Submitting…" : "Get My Customised Itinerary"}
             </Button>
           </motion.div>
         </form>

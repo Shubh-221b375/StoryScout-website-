@@ -10,6 +10,7 @@ import {
   verifyPassword,
 } from "./auth";
 import { dataStore } from "./data-store";
+import { appendPrivateTourToGoogleSheet } from "./google-sheets";
 import { storage } from "./storage";
 import { userStore } from "./user-store";
 
@@ -133,6 +134,55 @@ export async function registerRoutes(app: Express): Promise<Server> {
       featured: false,
     });
     res.status(201).json(review);
+  });
+
+  const privateTourSchema = z.object({
+    fullName: z.string().trim().min(2),
+    email: z.string().trim().email(),
+    contactNumber: z.string().trim().min(8),
+    cityState: z.string().trim().min(2),
+    maleAdults: z.string().trim().min(1),
+    femaleAdults: z.string().trim().min(1),
+    kids0to5: z.string().optional().default(""),
+    kids6to12: z.string().optional().default(""),
+    others: z.string().optional().default(""),
+    primaryDestination: z.string().trim().min(1),
+    alternativeDestination: z.string().optional().default(""),
+    tripStartDate: z.string().trim().min(1),
+    numberOfDays: z.string().trim().min(1),
+    flexibleDates: z.string().trim().min(1),
+    travelStyle: z.string().trim().min(1),
+    transportNeeded: z.string().optional().default(""),
+    transportType: z.string().optional().default(""),
+    budget: z.string().trim().min(1),
+    accommodation: z.string().optional().default(""),
+    roomType: z.string().optional().default(""),
+    meals: z.string().optional().default(""),
+    foodPreference: z.string().optional().default(""),
+    specialRequirements: z.string().optional().default(""),
+    preferredCallBackTime: z.string().optional().default(""),
+    howDidYouHear: z.string().optional().default(""),
+  });
+
+  app.post("/api/site/private-tours", async (req, res) => {
+    const parsed = privateTourSchema.safeParse(req.body);
+    if (!parsed.success) {
+      return res.status(400).json({ error: parsed.error.flatten() });
+    }
+
+    const inquiry = dataStore.createPrivateTourInquiry(parsed.data);
+    let sheetSynced = false;
+
+    if (process.env.GOOGLE_SHEET_WEBHOOK_URL?.trim()) {
+      try {
+        await appendPrivateTourToGoogleSheet(parsed.data, inquiry.createdAt);
+        sheetSynced = true;
+      } catch (error) {
+        console.error("Private tour Google Sheet sync failed:", error);
+      }
+    }
+
+    res.status(201).json({ ok: true, id: inquiry.id, sheetSynced });
   });
 
   // ── Bookings (auth required) ──────────────────────────────────────────────

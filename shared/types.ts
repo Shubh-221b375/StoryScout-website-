@@ -71,3 +71,36 @@ export interface SiteBooking {
 }
 
 export type PublicUser = Omit<SiteUser, "passwordHash">;
+
+export interface PrivateTourInquiryPayload {
+  fullName: string;
+  email: string;
+  contactNumber: string;
+  cityState: string;
+  maleAdults: string;
+  femaleAdults: string;
+  kids0to5: string;
+  kids6to12: string;
+  others: string;
+  primaryDestination: string;
+  alternativeDestination: string;
+  tripStartDate: string;
+  numberOfDays: string;
+  flexibleDates: string;
+  travelStyle: string;
+  transportNeeded: string;
+  transportType: string;
+  budget: string;
+  accommodation: string;
+  roomType: string;
+  meals: string;
+  foodPreference: string;
+  specialRequirements: string;
+  preferredCallBackTime: string;
+  howDidYouHear: string;
+}
+
+export interface SitePrivateTourInquiry extends PrivateTourInquiryPayload {
+  id: string;
+  createdAt: string;
+}

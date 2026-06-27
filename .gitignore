@@ -5,6 +5,7 @@ server/public/
 .env
 *.log
 drizzle/meta/
+desktop.ini
 
 # Large media — host externally (Supabase Storage, Cloudflare R2, etc.)
 attached_assets/**/*.mp4

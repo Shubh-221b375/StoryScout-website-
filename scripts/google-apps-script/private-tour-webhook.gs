@@ -1,14 +1,25 @@
 /**
  * StoryScout — Private Tour form → Google Sheet
  *
- * Setup:
- * 1. Create a Google Sheet with headers in row 1 (see HEADERS below).
- * 2. Extensions → Apps Script → paste this file → Save.
- * 3. Deploy → New deployment → Web app
+ * SETUP (important — follow every step):
+ *
+ * 1. Open your Google Sheet "StoryScout - Private tours details"
+ * 2. Copy the Sheet ID from the URL:
+ *    https://docs.google.com/spreadsheets/d/COPY_THIS_PART/edit
+ * 3. Paste it into SPREADSHEET_ID below
+ * 4. Extensions → Apps Script → paste this entire file → Save
+ * 5. Run authorizeSetup_ once (Run menu) and approve permissions
+ * 6. Deploy → New deployment → Web app
  *    - Execute as: Me
- *    - Who has access: Anyone
- * 4. Copy the Web app URL into Render/.env as GOOGLE_SHEET_WEBHOOK_URL
+ *    - Who has access: Anyone   ← must be "Anyone", not "Only myself"
+ * 7. Copy the Web app URL → Render env GOOGLE_SHEET_WEBHOOK_URL
+ *
+ * TEST: open the Web app URL in an incognito browser tab.
+ * You should see: {"ok":true,"message":"StoryScout webhook is live"}
  */
+
+// Paste your Sheet ID here (from the spreadsheet URL):
+var SPREADSHEET_ID = "PASTE_YOUR_SHEET_ID_HERE";
 
 var HEADERS = [
   "Submitted At",
@@ -39,9 +50,26 @@ var HEADERS = [
   "How Did You Hear",
 ];
 
+function getTargetSheet_() {
+  if (!SPREADSHEET_ID || SPREADSHEET_ID === "PASTE_YOUR_SHEET_ID_HERE") {
+    throw new Error(
+      "Set SPREADSHEET_ID at the top of the script to your Google Sheet ID",
+    );
+  }
+  return SpreadsheetApp.openById(SPREADSHEET_ID).getSheets()[0];
+}
+
+function doGet() {
+  return jsonResponse_({ ok: true, message: "StoryScout webhook is live" });
+}
+
 function doPost(e) {
   try {
-    var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheets()[0];
+    if (!e || !e.postData || !e.postData.contents) {
+      throw new Error("Missing POST body");
+    }
+
+    var sheet = getTargetSheet_();
     ensureHeaders_(sheet);
 
     var data = JSON.parse(e.postData.contents);
@@ -78,6 +106,13 @@ function doPost(e) {
   } catch (err) {
     return jsonResponse_({ ok: false, error: String(err) });
   }
+}
+
+/** Run once from the Apps Script editor to authorize and add headers. */
+function authorizeSetup_() {
+  var sheet = getTargetSheet_();
+  ensureHeaders_(sheet);
+  Logger.log("Setup complete. Headers ready on: " + sheet.getName());
 }
 
 function ensureHeaders_(sheet) {

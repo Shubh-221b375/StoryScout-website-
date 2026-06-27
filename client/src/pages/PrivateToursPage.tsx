@@ -42,8 +42,8 @@ export default function PrivateToursPage() {
       toast({
         title: "Enquiry submitted!",
         description: result.sheetSynced
-          ? "Saved to our sheet. WhatsApp opened — tap Send to share your details with us."
-          : "WhatsApp opened — tap Send to share your details with us.",
+          ? "Saved to Google Sheet. WhatsApp opened — tap Send to share your details with us."
+          : "WhatsApp opened — tap Send to share your details. (Google Sheet sync is not connected yet on the server.)",
       });
 
       setFormData(emptyPrivateTourForm);

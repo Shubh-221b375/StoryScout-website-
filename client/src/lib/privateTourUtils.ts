@@ -53,9 +53,16 @@ const LABELS: Record<string, Record<string, string>> = {
   alternativeDestination: { "not-sure": "Not sure / Suggest me" },
 };
 
-function label(group: keyof typeof LABELS, value: string): string {
+export function formatPrivateTourFieldValue(
+  group: keyof typeof LABELS,
+  value: string,
+): string {
   if (!value) return "—";
   return LABELS[group]?.[value] ?? value;
+}
+
+function label(group: keyof typeof LABELS, value: string): string {
+  return formatPrivateTourFieldValue(group, value);
 }
 
 function line(labelText: string, value: string): string {

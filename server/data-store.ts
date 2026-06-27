@@ -371,6 +371,8 @@ class DataStore {
         return sum + (pkg ? pkg.price * b.numberOfPeople : 0);
       }, 0);
 
+    const privateTours = this.data.privateTourInquiries;
+
     return {
       totalPackages: this.data.packages.length,
       totalBookings: bookings.length,
@@ -381,7 +383,9 @@ class DataStore {
       totalUsers: this.data.users.filter((u) => u.role === "customer").length,
       staffUsers: this.data.users.filter((u) => u.role !== "customer").length,
       estimatedRevenue: revenue,
+      totalPrivateTourInquiries: privateTours.length,
       recentBookings: bookings.slice(0, 5),
+      recentPrivateTourInquiries: privateTours.slice(0, 5),
     };
   }
 }

@@ -19,6 +19,7 @@ import AdminDashboard from "@/pages/admin/AdminDashboard";
 import AdminPackages from "@/pages/admin/AdminPackages";
 import AdminReviews from "@/pages/admin/AdminReviews";
 import AdminBookings from "@/pages/admin/AdminBookings";
+import AdminPrivateTours from "@/pages/admin/AdminPrivateTours";
 import AdminUsers from "@/pages/admin/AdminUsers";
 import { FloatingActions } from "@/components/layout/FloatingActions";
 
@@ -38,6 +39,7 @@ function Router() {
       <Route path="/admin/packages" component={AdminPackages} />
       <Route path="/admin/reviews" component={AdminReviews} />
       <Route path="/admin/bookings" component={AdminBookings} />
+      <Route path="/admin/private-tours" component={AdminPrivateTours} />
       <Route path="/admin/users" component={AdminUsers} />
       <Route component={NotFound} />
     </Switch>

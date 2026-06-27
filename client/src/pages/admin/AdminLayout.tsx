@@ -11,6 +11,7 @@ import {
   LogOut,
   ArrowLeft,
   Menu,
+  MapPinned,
 } from "lucide-react";
 import { useEffect, useState } from "react";
 
@@ -19,6 +20,7 @@ const navItems = [
   { href: "/admin/packages", label: "Packages", icon: Package },
   { href: "/admin/reviews", label: "Reviews", icon: Star },
   { href: "/admin/bookings", label: "Bookings", icon: CalendarCheck },
+  { href: "/admin/private-tours", label: "Private Tours", icon: MapPinned },
   { href: "/admin/users", label: "Team & Users", icon: Users, adminOnly: true },
 ];
 

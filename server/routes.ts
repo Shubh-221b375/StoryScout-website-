@@ -320,6 +320,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
     res.json({ ok: true });
   });
 
+  app.get("/api/admin/private-tours", requireStaff, (_req, res) => {
+    res.json(dataStore.getPrivateTourInquiries());
+  });
+
   app.get("/api/admin/bookings", requireStaff, (_req, res) => {
     res.json(dataStore.getBookings());
   });

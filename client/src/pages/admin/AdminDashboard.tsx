@@ -4,6 +4,7 @@ import { AdminLayout } from "./AdminLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { apiRequest, getQueryFn } from "@/lib/queryClient";
 import { packages as mockPackages, regions as mockRegions } from "@/lib/mockData";
+import { Link } from "wouter";
 import {
   Package,
   CalendarCheck,
@@ -11,6 +12,7 @@ import {
   Users,
   IndianRupee,
   Clock,
+  MapPinned,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
@@ -24,12 +26,23 @@ interface DashboardStats {
   totalUsers: number;
   staffUsers: number;
   estimatedRevenue: number;
+  totalPrivateTourInquiries: number;
   recentBookings: Array<{
     id: string;
     fullName: string;
     packageId: string;
     numberOfPeople: number;
     status: string;
+    createdAt: string;
+  }>;
+  recentPrivateTourInquiries: Array<{
+    id: string;
+    fullName: string;
+    email: string;
+    contactNumber: string;
+    primaryDestination: string;
+    tripStartDate: string;
+    numberOfDays: string;
     createdAt: string;
   }>;
 }
@@ -77,6 +90,12 @@ export default function AdminDashboard() {
       value: stats?.totalBookings ?? 0,
       icon: CalendarCheck,
       color: "text-accent",
+    },
+    {
+      title: "Private Tours",
+      value: stats?.totalPrivateTourInquiries ?? 0,
+      icon: MapPinned,
+      color: "text-teal-600",
     },
     {
       title: "Pending",
@@ -132,44 +151,82 @@ export default function AdminDashboard() {
         })}
       </div>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Recent bookings</CardTitle>
-        </CardHeader>
-        <CardContent>
-          {stats?.recentBookings?.length ? (
-            <div className="space-y-3">
-              {stats.recentBookings.map((b) => (
-                <div
-                  key={b.id}
-                  className="flex flex-col gap-2 rounded-lg border border-border p-3 sm:flex-row sm:items-center sm:justify-between"
-                >
-                  <div>
-                    <p className="font-medium">{b.fullName}</p>
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+        <Card>
+          <CardHeader>
+            <CardTitle>Recent bookings</CardTitle>
+          </CardHeader>
+          <CardContent>
+            {stats?.recentBookings?.length ? (
+              <div className="space-y-3">
+                {stats.recentBookings.map((b) => (
+                  <div
+                    key={b.id}
+                    className="flex flex-col gap-2 rounded-lg border border-border p-3 sm:flex-row sm:items-center sm:justify-between"
+                  >
+                    <div>
+                      <p className="font-medium">{b.fullName}</p>
+                      <p className="text-sm text-muted-foreground">
+                        {b.numberOfPeople} traveller{b.numberOfPeople > 1 ? "s" : ""} ·{" "}
+                        {new Date(b.createdAt).toLocaleDateString()}
+                      </p>
+                    </div>
+                    <Badge
+                      variant={
+                        b.status === "confirmed"
+                          ? "default"
+                          : b.status === "cancelled"
+                            ? "destructive"
+                            : "secondary"
+                      }
+                    >
+                      {b.status}
+                    </Badge>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p className="text-sm text-muted-foreground">No bookings yet.</p>
+            )}
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0">
+            <CardTitle>Recent private tours</CardTitle>
+            <Link href="/admin/private-tours">
+              <a className="text-sm font-medium text-primary hover:underline">View all</a>
+            </Link>
+          </CardHeader>
+          <CardContent>
+            {stats?.recentPrivateTourInquiries?.length ? (
+              <div className="space-y-3">
+                {stats.recentPrivateTourInquiries.map((inquiry) => (
+                  <div
+                    key={inquiry.id}
+                    className="rounded-lg border border-border p-3"
+                  >
+                    <p className="font-medium">{inquiry.fullName}</p>
                     <p className="text-sm text-muted-foreground">
-                      {b.numberOfPeople} traveller{b.numberOfPeople > 1 ? "s" : ""} ·{" "}
-                      {new Date(b.createdAt).toLocaleDateString()}
+                      {inquiry.primaryDestination} · {inquiry.numberOfDays} day
+                      {inquiry.numberOfDays === "1" ? "" : "s"} ·{" "}
+                      {inquiry.tripStartDate || "Dates TBD"}
+                    </p>
+                    <p className="text-sm text-muted-foreground">
+                      {inquiry.contactNumber} · {inquiry.email}
+                    </p>
+                    <p className="mt-1 text-xs text-muted-foreground">
+                      {new Date(inquiry.createdAt).toLocaleString()}
                     </p>
                   </div>
-                  <Badge
-                    variant={
-                      b.status === "confirmed"
-                        ? "default"
-                        : b.status === "cancelled"
-                          ? "destructive"
-                          : "secondary"
-                    }
-                  >
-                    {b.status}
-                  </Badge>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <p className="text-muted-foreground text-sm">No bookings yet.</p>
-          )}
-        </CardContent>
-      </Card>
+                ))}
+              </div>
+            ) : (
+              <p className="text-sm text-muted-foreground">No private tour enquiries yet.</p>
+            )}
+          </CardContent>
+        </Card>
+      </div>
     </AdminLayout>
   );
 }
